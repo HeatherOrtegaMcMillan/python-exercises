@@ -76,4 +76,4 @@ user_start_with_white = username[0] != ' ' and username[-1] != ' '
 print("pass check:", min_pass, "\nuser check: ", max_user, "\npass same user: ", pass_same_as_user, "\npass start with ws: ", pass_start_with_white, "\nuser start with ws:", user_start_with_white
 )
 #value that combines all of the other values
-pass_good = min_pass == True and max_user == True and pass_same_as_user == True and pass_start_with_white == True and user_start_with_white == True
+pass_good = min_pass and max_user and pass_same_as_user and pass_start_with_white and user_start_with_white
