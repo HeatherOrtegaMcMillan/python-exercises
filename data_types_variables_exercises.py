@@ -89,7 +89,8 @@ True or "42"
 [1] + [2]
 # [1, 2]
 [1] * 2
-#[1, 1] multiplies list by 2
+#[1, 1] multiplies list by 2. 
+# why doesn't this make 2 lists? how come it just adds all the values again
 [1] * [2]
 # error, can't multiply a list by a list
 
