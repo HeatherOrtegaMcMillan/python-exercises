@@ -104,12 +104,18 @@ numbers_plus_5 = [n + 5 for n in numbers]
 numbers_plus_5
 
 # BONUS Make a variable named "primes" that is a list containing the prime numbers in the numbers list. *Hint* you may want to make or find a helper function that determines if a given number is prime or not.
-def is_prime(num):
-    for i in range(2, num):
-        if num % i == 0:
-            return False
-        else: 
-            return True
+    # Here I am operating under the assumption that negative numbers can be considered prime 
 
+# function that returns True if number entered is prime, and False if number is not prime (accounts for negatives)
+def is_prime(num):          
+    absv = abs(num)
+    for i in range(2, absv):
+        if absv % i == 0:
+            return False
+            break
+    else:
+        return True
+
+# list comprehension that runs through each element of the list to see if it's prime, using the is_prime function
 prime_numbers = [n for n in numbers if is_prime(n)]
 prime_numbers
