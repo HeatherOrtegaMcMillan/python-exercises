@@ -121,7 +121,7 @@ n = int(input("Please enter an integer: "))
 for i in range(1, n + 1):
     print(i, i ** 2, i ** 3) 
 cont = (input("would you like to continue? y/n: "))
-while cont == 'y':
+while cont.lower().startswith('y'):
     n += 1
     print(n, n ** 2, n **3)
     cont = (input("would you like to continue? y/n: "))
