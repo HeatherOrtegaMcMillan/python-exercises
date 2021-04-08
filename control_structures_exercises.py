@@ -141,3 +141,58 @@ elif 0 <= grade <= 59:
 
 # Bonus
 # Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+
+# 6. Create a list of dictionaries where each dictionary represents a book that you have read.
+# Dictionary
+books_ive_read = [
+    {
+        'title': 'Harry Potter and the Sorcerer\'s Stone',
+        'author': 'J. K. Rowling',
+        'genre': ['fantasy', 'mystery', 'young adult']
+    },
+    {
+        'title': 'Lord of the Rings: Fellowship of the Ring',
+        'author': 'J. R. R. Tolkein',
+        'genre': ['fantasy', 'adventure']
+    },
+    {
+        'title': 'A Darker Shade of Magic',
+        'author': 'V. E. Schwab',
+        'genre': ['adult fantasy', 'magic']
+    },
+    {
+        'title': 'Percy Jackson and the Lightning Thief',
+        'author': 'Rick Riordan',
+        'genre': ['young adult', 'adventure', 'greek mythology']
+    },
+    {
+        'title': 'Twilight',
+        'author': 'Stephanie Meyer',
+        'genre': ['romance', 'vampire']
+    },
+    {
+        'title': 'The Hunger Games',
+        'author': 'Suzanne Collins',
+        'genre': ['dystopian fiction', 'young adult', 'adventure']
+    }   
+
+]
+
+#Each dictionary in the list should have the keys title, author, and genre. 
+# Loop through the list and print out information about each book.
+
+book_info = [book for book in books_ive_read]
+print(book_info)
+
+#Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+genre_search = input("What genre are you looking for: ")
+genre_search = genre_search.lower()
+count = 0
+for book in books_ive_read:
+    if genre_search in (book['genre']):
+        print(book['title'])
+        count += 1 
+        continue
+if count == 0:
+    print(f"no books matching {genre_search} genre in database")
+    
