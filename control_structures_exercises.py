@@ -13,17 +13,23 @@ else:
     # the number of hours worked in one week
     # the hourly rate
     # how much the week's paycheck will be
-# write the python code that calculates the weekly paycheck. You get paid time and a half if you work more than 40 hours
+# write the python code that calculates the weekly paycheck. 
+# You get paid time and a half if you work more than 40 hours
 
 # formula without overtime condition
-hrs_worked_week = input("How many hours did you work this week? (answer with digits): ")   
-hourly_rate = input("How much do you get paid per hour? (answer in whole dollars only): $")
+hrs_worked_week = input(
+                  "How many hours did you work this week? (answer with digits): ")   
+hourly_rate = input(
+                "How much do you get paid per hour? (answer in whole dollars only): $")
 paycheck_amt = int(hourly_rate) * int(hrs_worked_week)
 print(f"Your paycheck will be ${paycheck_amt} this week")
 
-# forumla with overtime condition. All hours (not just the hours over 40) will be charged at time and a half
-hrs_worked_week = input("How many hours did you work this week? (answer with digits): ")
-hourly_rate = input("How much do you get paid per hour? (answer in whole dollars only): $")
+# forumla with overtime condition. All hours (not just the hours over 40) 
+# will be charged at time and a half
+hrs_worked_week = input(
+                  "How many hours did you work this week? (answer with digits): ")
+hourly_rate = input(
+              "How much do you get paid per hour? (answer in whole dollars only): $")
 if int(hrs_worked_week) > 40:
     paycheck_amt = (int(hourly_rate) * 1.5) * int(hrs_worked_week)
 else:
@@ -31,7 +37,8 @@ else:
 print(f"Your paycheck will be ${paycheck_amt} this week")
 
 
-# Create a while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
+# Create a while loop that will count by 2's starting with 0 and ending at 100. 
+# Follow each number with a new line.
 i = 0
 while i <= 100:
     print(i)
@@ -41,32 +48,38 @@ i = 100
 while i >= -10:
     print(i)
     i -= 5
-# Create a while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000
+# Create a while loop that starts at 2
+# displays the number squared on each line 
+# while the number is less than 1,000,000
 i = 2
 while i <= 1000000:
     print(i)
     i = i ** 2
 
-# Write a loop that uses print to create the output shown below (counts down by 5s from 100 to 5)
+# Write a loop that uses print to create the output shown below 
+# (counts down by 5s from 100 to 5)
 i = 100
 while i >= 5:
     print(i)
     i -= 5
 
-# Write some code that prompts the user for a number, then shows a multiplication table up through 10 for that number.
+# Write some code that prompts the user for a number, 
+# then shows a multiplication table up through 10 for that number.
 n = input("enter a number: ")
 x = int(n)
 for i in range(1,11):
     print(x, 'x', i, '=', x*i)
 
-#ii. Create a for loop that uses print to create the output shown below. (number pyramid)
+#ii. Create a for loop that uses print to create the output shown below. 
+# (number pyramid)
 for n in range (1,10):
     for i in range (n):
         print (n, end="")
     print ()   
 
 # i. Prompt the user for an odd number between 1 and 50. 
-# Use a loop and a break statement to continue prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
+# Use a loop and a break statement to continue prompting the user if they enter invalid input. 
+# (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 skipdigit = int(input("Type in an odd number between 1 and 50: "))
 while skipdigit % 2 == 0 or 0 < skipdigit > 51:
     skipdigit = int(input("invalid input. Please type in an odd number between 1 and 50: "))
@@ -140,9 +153,37 @@ elif 0 <= grade <= 59:
     print('F')
 
 # Bonus
-# Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+# Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+)
+grade = int(input("Enter your grade (number from 0 - 100): "))
+if 88 <=  grade <= 100:
+    print('A', end = '')
+    if grade in range(99, 101):
+        print('+')
+    if grade in range (88, 90):
+        print('-')
+elif 80 <= grade <= 87:
+    print('B', end = '')
+    if grade in range (86, 88):
+        print('+')
+    if grade in range (80, 81):
+        print ('-')
+elif 67 <= grade <= 79:
+    print('C', end = '')
+    if grade in range(78, 80):
+        print('+')
+    if grade in range(67, 69):
+        print('-')
+elif 60 <= grade <= 66:
+    print('D', end = '')
+    if grade in range(65, 67):
+        print('+')
+    if grade in range(60, 62):
+        print('-')
+elif 0 <= grade <= 59:
+    print('F', end = '')
 
-# 6. Create a list of dictionaries where each dictionary represents a book that you have read.
+# 6. Create a list of dictionaries where each dictionary represents 
+# a book that you have read
 # Dictionary
 books_ive_read = [
     {
@@ -178,13 +219,15 @@ books_ive_read = [
 
 ]
 
-#Each dictionary in the list should have the keys title, author, and genre. 
-# Loop through the list and print out information about each book.
+#Each dictionary in the list should have the keys title, author, and genre 
+# Loop through the list and print out information about each book
 
 book_info = [book for book in books_ive_read]
 print(book_info)
 
-#Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+#Prompt the user to enter a genre, 
+# then loop through your books list and print out the titles 
+# of all the books in that genre.
 genre_search = input("What genre are you looking for: ")
 genre_search = genre_search.lower()
 count = 0
