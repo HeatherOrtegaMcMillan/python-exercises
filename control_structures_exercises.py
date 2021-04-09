@@ -1,14 +1,15 @@
-#Conditional Basics
+print("-------- 1. Conditional Basics --------")
 
 
 today = input('What day is it today? ') # a. prompt the user for a day of the week
 if today.lower() == 'monday': # print out whether the day is Monday or not
     print('it\'s Monday!') 
-elif today.lower() == 'saturday' or 'sunday': #print out whether the day is a weekday or a weekend
+elif today.lower() == 'saturday' or today.lower() == 'sunday': #print out whether the day is a weekday or a weekend
     print('it\'s the freakin weekend baby!')
 else: 
     print('it\'s not Monday :(')
 
+print("-------- 1c. Hours worked exercise --------")
 # c. create variables and make up values for
     # the number of hours worked in one week
     # the hourly rate
@@ -24,6 +25,7 @@ hourly_rate = input(
 paycheck_amt = int(hourly_rate) * int(hrs_worked_week)
 print(f"Your paycheck will be ${paycheck_amt} this week")
 
+print("-------- 1.c Hours worked with overtime --------")
 # forumla with overtime condition. All hours (not just the hours over 40) 
 # will be charged at time and a half
 hrs_worked_week = input(
@@ -36,18 +38,22 @@ else:
     paycheck_amt = int(hourly_rate) * int(hrs_worked_week)
 print(f"Your paycheck will be ${paycheck_amt} this week")
 
-
+print("-------- 2. Loop Basics --------")
+print("-------- While Loops --------")
+print("-------- Count by 2, to 100 --------")
 # Create a while loop that will count by 2's starting with 0 and ending at 100. 
 # Follow each number with a new line.
 i = 0
 while i <= 100:
     print(i)
     i += 2
+print("-------- Count backwards by 5 --------")
 # Alter your loop to count backwards by 5's from 100 to -10.
 i = 100
 while i >= -10:
     print(i)
     i -= 5
+print("-------- Squares starting from 2 --------")
 # Create a while loop that starts at 2
 # displays the number squared on each line 
 # while the number is less than 1,000,000
@@ -55,7 +61,7 @@ i = 2
 while i <= 1000000:
     print(i)
     i = i ** 2
-
+print("-------- Counts down by 5s from 100 to 5 --------")
 # Write a loop that uses print to create the output shown below 
 # (counts down by 5s from 100 to 5)
 i = 100
@@ -63,13 +69,14 @@ while i >= 5:
     print(i)
     i -= 5
 
+print("-------- For loops --------")
 # Write some code that prompts the user for a number, 
 # then shows a multiplication table up through 10 for that number.
 n = input("enter a number: ")
 x = int(n)
 for i in range(1,11):
     print(x, 'x', i, '=', x*i)
-
+print("-------- Number Pyramid --------")
 #ii. Create a for loop that uses print to create the output shown below. 
 # (number pyramid)
 for n in range (1,10):
@@ -77,6 +84,7 @@ for n in range (1,10):
         print (n, end="")
     print ()   
 
+print("-------- Skipping number exercise --------")
 # i. Prompt the user for an odd number between 1 and 50. 
 # Use a loop and a break statement to continue prompting the user if they enter invalid input. 
 # (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
@@ -90,32 +98,36 @@ for i in range(1, 50, 2):
     else:
         print("Here is an odd number: ", i)
 
+print("-------- Counting up to your number exercise --------")
 # d. The input function can be used to prompt for input and use that input in your python code. 
 # Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
 # (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
 number = int(input("enter a positive number: "))
-if number < 0:
+while number < 0:
     int(input("I said POSITIVE number: "))
 for i in range(number + 1):
     print(i)
-
+print("-------- Counting down from your number exercise --------")
 # Write a program that prompts the user for a positive integer. 
 # Next write a loop that prints out the numbers from the number the user entered down to 1.
 number = int(input("enter a positive number: "))
-if number < 0:
-    int(input("I said POSITIVE number: "))
+while number < 0:
+    number = int(input("I said POSITIVE number: "))
+    if number > 0:
+        break
 for i in range(number, 0, -1):
     print (i)
 
-# 3. Fizz buzz
+print("-------- 3. Fizz buzz --------")
 # One of the most common interview questions for entry-level programmers is the FizzBuzz test. 
 # Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
 
-Write a program that prints the numbers from 1 to 100.
+#Write a program that prints the numbers from 1 to 100.
 
-For multiples of three print "Fizz" instead of the number
-For the multiples of five print "Buzz".
-For numbers which are multiples of both three and five print "FizzBuzz".
+# For multiples of three print "Fizz" instead of the number
+# For the multiples of five print "Buzz".
+# For numbers which are multiples of both three and five print "FizzBuzz".
+
 for n in range(1, 101):
     if n % 3 == 0 and n % 5 == 0:
         print("FizzBuzz")
@@ -129,7 +141,7 @@ for n in range(1, 101):
     else:
         print(n)
 
-# 4. Display table of powers
+print("-------- 4. Display table of powers --------")
 n = int(input("Please enter an integer: "))
 for i in range(1, n + 1):
     print(i, i ** 2, i ** 3) 
@@ -139,7 +151,7 @@ while cont.lower().startswith('y'):
     print(n, n ** 2, n **3)
     cont = (input("would you like to continue? y/n: "))
 
-# 5 Convert given number grades into letter grades.
+print("-------- 5 Convert given number grades into letter grades --------")
 grade = int(input("Enter your grade (number from 0 - 100): "))
 if 88 <=  grade <= 100:
     print('A')
@@ -152,7 +164,7 @@ elif 60 <= grade <= 66:
 elif 0 <= grade <= 59:
     print('F')
 
-# Bonus
+print("-------- Bonus: add +/- --------")
 # Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+)
 grade = int(input("Enter your grade (number from 0 - 100): "))
 if 88 <=  grade <= 100:
@@ -182,6 +194,7 @@ elif 60 <= grade <= 66:
 elif 0 <= grade <= 59:
     print('F', end = '')
 
+print("-------- 6. Book exercise --------")
 # 6. Create a list of dictionaries where each dictionary represents 
 # a book that you have read
 # Dictionary
@@ -222,8 +235,9 @@ books_ive_read = [
 #Each dictionary in the list should have the keys title, author, and genre 
 # Loop through the list and print out information about each book
 
-book_info = [book for book in books_ive_read]
-print(book_info)
+for book in books_ive_read:
+    [print(key, ': ', book[key]) for key in book]
+    print('---------')
 
 #Prompt the user to enter a genre, 
 # then loop through your books list and print out the titles 
