@@ -189,7 +189,10 @@ print('\nHow many students are in web development? Data Science?')
 # find list of all types of courses
 types_of_courses = [c['course'] for c in students] 
 # count distinct types in list 
-print(Counter(types_of_courses)) # <---- figure out better way to do this!! 
+# print(Counter(types_of_courses)) # improved way to print this out below vvv
+course_counts = Counter(types_of_courses)
+print('There are ',  course_counts['web development'], ' students in web development')
+print('There are ', course_counts['data science'], ' students in data science')
 
 #----------------------------------------------
 # What is the average number of pets for students in web development?
@@ -231,7 +234,7 @@ print("Average pet age for data science students is ",
 # do the counter thing again
 # there's probably a better way to do this
 
-# What is the least frequent coffee preference for web development students?
+# What is the most frequent coffee prefernce for data science students?
 print('\nWhat is most frequent coffee preference for data science students?')
 coffee_prefs = [] # create list to store prefs
 for c in students:
@@ -252,7 +255,7 @@ print('most frequent coffee preference for data science students is\n',
 #----------------------------------------------
 # What is the least frequent coffee preference for web development students?
 print('\nWhat is the least frequent coffee preference for web development students?')
-coffee_prefs_wd = [] # set empty list for coffe preferences for web dev students
+coffee_prefs_wd = [] # set empty list for coffee preferences for web dev students
 for c in students:
     if c['course'] != 'web development':
         continue
@@ -264,7 +267,7 @@ pref_counts_wd = Counter(coffee_prefs_wd)
 #there are two least common preferences so add those tuples to a list
 #use the .most_common()[:-2-1:-1]] to get least. see documentation for clarification
 least_common_list = pref_counts_wd.most_common()[:-2-1:-1]
-    # print(least_common_list[0])
+    #print(least_common_list)
 #unpack each tuple from the least common list
 leastcommonwd1, lcwdcounter1 = least_common_list[0]
 leastcommonwd2, lcwdcounter2 = least_common_list[1]
