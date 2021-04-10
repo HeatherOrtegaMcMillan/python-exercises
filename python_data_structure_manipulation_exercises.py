@@ -357,10 +357,49 @@ print('The average number of pets for medium coffee drinkers is: ',
 # What is the most common type of pet for web development students?
     # find web dev students
     # find pet types
-    # 
+common_pets = []
+for s in students:
+    if s['course'] == 'web development':
+        for kind in s['pets']:
+            common_pets.append(kind['species'])
+pet_totals = Counter(common_pets)
+most_common_pet, countp = pet_totals.most_common(1)[0]
+print('The most common type of pet among web development students is a ',
+       most_common_pet, '. \nThere are ', countp, '.'
+     )
 
 #----------------------------------------------
 # What is the average name length?
+ #I'm gonna use a function for funzies. 
+ # create function that counts name chars minus any whitespaces
+ # loop through dictionary of names
+ # add length to list 
+ # averge that list
+def len_of_name(full_name):
+    letter_count = len(full_name) - full_name.count(' ')
+    return letter_count
+
+print('\nWhat is the average name length?')
+name_lengths = []
+for s in students:
+    name_lengths.append(len_of_name(s['student']))
+print('The average length of students\' names is: ',
+       round(mean(name_lengths), 2))
 
 #----------------------------------------------
 # What is the highest pet age for light coffee drinkers?
+    # find all pet ages from light coffee drinkers
+    # put values in a list
+    # use max() to find highest
+
+print('\nWhat is the highest pet age for light coffee drinkers?')
+
+pet_ages =[]
+for s in students:
+    if s['coffee_preference'] == 'light':
+        for pet in s['pets']:
+            pet_ages.append(pet['age'])
+            
+print('The highest pet age for light coffee drinkers is: ', 
+       max(pet_ages), 'years old.'
+     )
