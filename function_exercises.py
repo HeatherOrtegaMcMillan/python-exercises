@@ -23,12 +23,12 @@ def is_vowel(string):
     """
     takes in a string with a length of 1 (only one letter) outputs True if string is a vowel, False if it's not
     """
-    # this is to check the type of the input to make sure it's a string
+    # this is to check the type of the input to make sure it's a string (had None before)
     if type(string) != str:
-        return None
-    # if the length is more than 1 char long, will not work
+        return False
+    # if the length is more than 1 char long, will return False (had None before)
     if len(string) != 1:
-        return None
+        return False
     # checking the lowercased string to a list of vowels
     if string.lower() in ('a', 'e', 'i', 'o', 'u'):
         return True
@@ -74,9 +74,9 @@ def capitalize_consonant(string):
     The function capitalizes the first letter of the word if the word starts with a consonant
 
     """
-    # checks to makesure input is string
+    # checks to make sure input is string
     if type(string) != str: 
-        return 'Type error: enter one word string'
+        return False
     # checks if first letter of string is a consonant then capatlizes word
     if is_consonant(string[0]) == True:
         return string.capitalize()
@@ -256,4 +256,51 @@ def cumulative_sum(list_of_numbers):
 print('--------------- cumulative_sum check ------------')
 print('Test List: [1, 2, 3]\nOutput:', cumulative_sum([1, 2, 3]))
 
+
+
+# Create a function named twelveto24. 
+# It should accept a string in the format 10:45am or 4:30pm 
+# and return a string that is the representation of the time in a 24-hour format. 
+# Bonus write a function that does the opposite.
+
+# this function checks to see if the time entered is PM 
+def pm_check(string):
+    """
+    function input is a string, checks to see if 'pm' is anywhere in the string
+    used in twelveto24() implementation
+    """
+    if 'pm' in (string):
+        return True
+
+# THIS NEEDS WORK TO GET THE PROPER PLACES
+def time_to_number(string):
+    """
+    this function takes string as input and outputs an int
+    removes the am/pm/: and converts string to an int
+    used in twelveto24() implementation
+    """
+    # removes am/pm by removing last two elemnts in string, to account for inputs such as 9:40am 10:45am
+    string = string[0:-2:]
+    # takes out : in the time 
+    string = string.replace(':','')
+    # converts numbers to int
+    return int(string)
+
+def twelveto24(time):
+    """
+    This function takes time as a string (format: ie HH:MMam or H:MMpm )
+    and outputs the same time but in military, as an int
+    must use pm_check() and time_to_number() functions
+    """
+    #check to see if the time is PM
+    if pm_check(time) == True:
+        #convert the string to a number and add 1200
+        return time_to_number(time) + 1200
+    elif '12:' in time:
+        time = time.replace('12', '00', 1)
+        return time_to_number(time)
+    else:
+        #convert string to number
+        return time_to_number(time)
+    
 
