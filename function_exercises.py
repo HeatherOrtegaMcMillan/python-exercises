@@ -284,7 +284,7 @@ def time_to_number(string):
     # takes out : in the time 
     string = string.replace(':','')
     # converts numbers to int
-    return int(string)
+    return int(string) #<-- leave as string? need to account for 1:00 changing to 0100
 
 def twelveto24(time):
     """
