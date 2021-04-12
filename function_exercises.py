@@ -231,12 +231,17 @@ print('Input:   This is A %$Test  \nOutput:', normalize_name('   This is A %$Tes
     # new_list[1] = list_of_numbers[1] + new_list[0]
     # new_list[2] = list_of_numbers[2] + new_list[1]
 # -------- had the code below in jupyter notebook and it worked. brought it here and didn't work.
-# ?????? Why ??????? 
-# list_of_numbers = [1, 2, 3]
-# new_list[0] = list_of_numbers[0]
-# for n in range(1, len(list_of_numbers)):
-#   new_list[n] = list_of_numbers[n] + new_list[n-1]
-# new_list
+# this function is the one I originally had in Jupyter that didn't work because new_list had been defined alread
+# and it had been messing me up
+ 
+def cumulative_sum2(list_of_numbers):
+    new_list = list_of_numbers # so i fixed it here by setting the new_list equal to the input list so it would have enough indexes
+    new_list[0] = list_of_numbers[0]
+    for n in range(1, len(list_of_numbers)):
+        new_list[n] = list_of_numbers[n] + new_list[n-1]
+    return new_list
+print('\n--------------- $$$$$ cumulative_sum2 check $$$$$  ------------')
+print('Test List: [1, 2, 3]\nOutput:', cumulative_sum2([1, 2, 3]))
 
 def cumulative_sum(list_of_numbers):
     """
