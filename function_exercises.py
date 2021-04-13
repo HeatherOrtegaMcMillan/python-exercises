@@ -207,8 +207,8 @@ def normalize_name(string):
 
     #new_list = [sum(nlist[0:x:1]) for x in range(0, length +1)]
     #this is from Forrest, I wanted to do this before but couldn't figure out how. 
-# -------- had the code below in jupyter notebook and it worked. brought it here and didn't work.
-# this function is the one I originally had in Jupyter that didn't work because new_list had been defined alread
+# -------- had cumulative_sum2 in jupyter notebook and it worked. brought it here and didn't work.
+# this function is the one I originally had in Jupyter that didn't work because new_list had been defined already
 # and it had been messing me up
  
 def cumulative_sum2(list_of_numbers):
