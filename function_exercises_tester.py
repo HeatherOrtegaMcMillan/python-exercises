@@ -1,7 +1,6 @@
-# ----------- Function Exercises -------------
-
-# ~~~~~ IF YOU WANT TO TEST A FUNCTION GO TO function_ecerciese_tester.py
-# ~~~~~ ADD FINISHED FUNCTION TO THIS FILE
+# ----------- Function Exercises ------------- 
+# ~~~~~~~~~~~~~~~~~ THIS IS A TESTER COPY: ~~~~~~~~~~~~~~~~~~
+# TEST ALL FUNCTIONS HERE COPY TO function_exercises.py TO IMPORT THEM 
 
 # 1. Define a function named is_two. 
 # It should accept one input and return True if the passed input is either:
@@ -39,6 +38,9 @@ def is_vowel(string):
     else:
         return False # must put false, otherwise returns 'NONE'
 
+print('------------ is vowel check ---------------')
+print('2 is a vowel:', is_vowel(2), '  a is a vowel:', is_vowel('a'), '  t is a vowel:', is_vowel('t'))
+
 # 3. Define a function named is_consonant. 
 # It should return True if the passed string is a consonant, False otherwise. 
 # Use your is_vowel function to accomplish this.
@@ -58,6 +60,10 @@ def is_consonant(string):
         return True
     else:
         return False
+
+print('------------ is_consonant check -------------')
+print('2 is a consonant:', is_consonant(2), '  t is a consonant:', is_consonant('t'))
+
 
 # 3.  Define a function that accepts a string that is a word. 
 # The function should capitalize the first letter of the word if the word starts with a consonant.
@@ -81,6 +87,10 @@ def capitalize_consonant(string):
     else:
         return string
 
+print('--------- capitalize consonant check -----------')
+print('Testinput : word', '   output:', capitalize_consonant('word'))
+
+
 # 5. Define a function named calculate_tip. 
 # It should accept a tip percentage (a number between 0 and 1) and the bill total, and return the amount to tip.
 
@@ -95,6 +105,9 @@ def calculate_tip(tip_percent, bill_total):
     # return the calculated tip and round to nearest hundreth 
     else:
         return round((bill_total * tip_percent), 2)
+
+print('------------- calculate_tip check --------------')
+print ('Input: .15 tip and 10.50 total. Tip is: ', calculate_tip(.15, 10.50))
 
 # 6. Define a function named apply_discount. 
 # It should accept a original price, and a discount percentage, and return the price after the discount is applied.
@@ -111,6 +124,11 @@ def apply_discount(orig_price, discount_percent):
     else:
         return round(((discount_percent * orig_price) + orig_price), 2)
 
+print('------------- apply_discount check ---------------')
+print('Original Price: 19.99\nDiscount Percent: .20\nPrice after discount is: ', 
+        apply_discount(19.99, .20))
+
+
 # 7. Define a function named handle_commas. 
 #  It should accept a string that is a number that contains commas in it as input, 
 #  and return a number as output.
@@ -125,6 +143,9 @@ def handle_commas(string):
         return None
     # remove any commas and cast input as an int
     return int(string.replace(',', ''))
+
+print('--------------- handle_commas check ------------')
+print('Input: 12,345\nOutput:', handle_commas('12,345'))
 
 # 8. Define a function named get_letter_grade. 
 # It should accept a number and return the letter grade associated with that number (A-F).
@@ -145,6 +166,9 @@ def get_letter_grade(grade):
         return('D')
     elif 0 <= grade <= 59:
         return('F')
+print('--------------- get_letter_grade ------------')
+print(f'If your grade was 87, your letter grade is {get_letter_grade(87)}')
+print(f'If your grade was 100, your letter grade is {get_letter_grade(100)}')
 
 # 9. Define a function named remove_vowels that accepts a string and 
 # returns a string with all the vowels removed
@@ -163,6 +187,9 @@ def remove_vowels(string):
             new_string = new_string.replace(letter, '')
     #all that should be left are the consonants 
     return new_string
+
+print('--------------- remove_vowels ------------')
+print('Input: this is a test\n Output:', remove_vowels('this is a test'))
 
 # 10. Define a function named normalize_name. It should accept a string and return a valid python identifier, that is:
     # anything that is not a valid python identifier should be removed
@@ -195,6 +222,8 @@ def normalize_name(string):
             string = string.replace(letter, '')
     # return 
     return string
+print('--------------- normalize_name check ------------')
+print('Input:   This is A %$Test  \nOutput:', normalize_name('   This is A %$Test  '))
 
 # 11. Write a function named cumulative_sum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 # cumulative_sum([1, 1, 1]) returns [1, 2, 3]
@@ -217,6 +246,8 @@ def cumulative_sum2(list_of_numbers):
     for n in range(1, len(list_of_numbers)):
         new_list[n] = list_of_numbers[n] + new_list[n-1]
     return new_list
+print('\n--------------- $$$$$ cumulative_sum2 check $$$$$  ------------')
+print('Test List: [1, 2, 3]\nOutput:', cumulative_sum2([1, 2, 3]))
 
 def cumulative_sum(list_of_numbers):
     """
@@ -233,6 +264,11 @@ def cumulative_sum(list_of_numbers):
         new_list.append(list_of_numbers[n] + new_list[n-1])
 
     return new_list
+
+print('--------------- cumulative_sum check ------------')
+print('Test List: [1, 2, 3]\nOutput:', cumulative_sum([1, 2, 3]))
+
+
 
 # BONUS Create a function named twelveto24. 
 # It should accept a string in the format 10:45am or 4:30pm 
@@ -294,6 +330,8 @@ def twelveto24(time):
         time = time_to_number(time)
         #convert back to string and fill extra spots with 0s
         return (str(time)).zfill(4)
+print('----------------- twelveto24 check ---------------------')    
+print("12:40am becomes: ", twelveto24("12:40am"))
 
 # BONUS BONUS write a function that does the opposite.
 def twentyfourto12(string):
@@ -330,6 +368,13 @@ def twentyfourto12(string):
             thetime = str(thetime)
             thetime = thetime[:-2] + ':' + thetime[-2:] + 'pm'
             return thetime
+
+print('----------------- twentyfourto12 check ---------------------')
+print('0930', twentyfourto12('0930'), 
+      '| 1445 ', twentyfourto12('1445'),
+      '| 0012', twentyfourto12('0012'),
+      '| 1213', twentyfourto12('1213')
+      )
 
 # BONUS NUBMER 2: Create a function named col_index. 
 #   It should accept a spreadsheet column name, and return the index number of the column.
