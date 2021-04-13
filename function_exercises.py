@@ -230,6 +230,9 @@ print('Input:   This is A %$Test  \nOutput:', normalize_name('   This is A %$Tes
     # new_list[0] = list_of_numbers[0]
     # new_list[1] = list_of_numbers[1] + new_list[0]
     # new_list[2] = list_of_numbers[2] + new_list[1]
+
+    #new_list = [sum(nlist[0:x:1]) for x in range(0, length +1)]
+    #this is from Forrest, I wanted to do this before but couldn't figure out how. 
 # -------- had the code below in jupyter notebook and it worked. brought it here and didn't work.
 # this function is the one I originally had in Jupyter that didn't work because new_list had been defined alread
 # and it had been messing me up
@@ -256,6 +259,7 @@ def cumulative_sum(list_of_numbers):
     for n in range(1, len(list_of_numbers)):
         #append the new list with the nth index of the list to the n-1th index of the new list
         new_list.append(list_of_numbers[n] + new_list[n-1])
+
     return new_list
 
 print('--------------- cumulative_sum check ------------')
@@ -277,19 +281,19 @@ def pm_check(string):
     if 'pm' in (string):
         return True
 
-# THIS NEEDS WORK TO GET THE PROPER PLACES
+# FIXED
 def time_to_number(string):
     """
     this function takes string as input and outputs an int
-    removes the am/pm/: and converts string to an int
+    removes the am/pm/: and converts string to an int (so addition can be performed)
     used in twelveto24() implementation
     """
     # removes am/pm by removing last two elemnts in string, to account for inputs such as 9:40am 10:45am
     string = string[0:-2:]
     # takes out : in the time 
     string = string.replace(':','')
-    # converts numbers to int
     return int(string) #<-- leave as string? need to account for 1:00 changing to 0100
+    
 
 def twelveto24(time):
     """
@@ -297,15 +301,76 @@ def twelveto24(time):
     and outputs the same time but in military, as an int
     must use pm_check() and time_to_number() functions
     """
+    # special conditions to account for 12am being 00 and 12pm not adding 12
+    # uses '12:' so as not to capture minutes (i.e. 10:12)
+    if '12:' in time:
+        # check to see if pm if it is just transform and go
+        if pm_check(time) == True:
+            time = time_to_number(time)
+            return (str(time)).zfill(4)
+        # check if am 
+        else:
+            #replace the first 12 with 00 (the 1 makes sure 12:12 wont change to 00:00) and take out : and am 
+            time = time_to_number(time.replace('12', '00', 1))
+            #convert back to string and fill extra spots with 0s
+            return (str(time)).zfill(4)
+
     #check to see if the time is PM
-    if pm_check(time) == True:
-        #convert the string to a number and add 1200
-        return time_to_number(time) + 1200
-    elif '12:' in time:
-        time = time.replace('12', '00', 1)
-        return time_to_number(time)
-    else:
-        #convert string to number
-        return time_to_number(time)
+    elif pm_check(time) == True:
+        #convert the string to a number remove : and pm and add 1200
+        time = time_to_number(time) + 1200
+        #convert back to string and fill extra spots with 0s
+        return (str(time)).zfill(4)
     
+    # any AMs make it this far
+    else:
+        #convert string to number to remove : and am
+        time = time_to_number(time)
+        #convert back to string and fill extra spots with 0s
+        return (str(time)).zfill(4)
+print('----------------- twelveto24 check ---------------------')    
+print("12:40am becomes: ", twelveto24("12:40am"))
+
+def twentyfourto12(string):
+    """
+    this function takes a 4 digit string as an input, and outputs a string 
+    input should be military time in 4 digits (i.e. 0930) and will output the time in 12 hr format (9:30am)
+    """
+    if len(string) != 4: # check to make sure enough digits were entered
+        return False
+    #maybe add check to see if it's correct digit 3 like it shouldn't be > 5
+    
+    #change string to an int called time to manipulate it 
+    thetime = int(string)
+
+    # if 0000 - 1159 its AM
+    if 0 <= thetime <= 1159:
+        if 0 <= thetime <= (59): #check to see for 12am to do special condition
+            thetime = thetime + 1200
+            thetime = str(thetime)
+            # add : and am
+            thetime = thetime[:-2] + ':' + thetime[-2:] + 'am'
+            return thetime
+        else:
+            thetime = str(thetime)
+            thetime = thetime[:-2] + ':' + thetime[-2:] + 'am'
+            return thetime
+    else:
+        if 1200 <= thetime <=1259:
+            thetime = str(thetime)
+            thetime = thetime[:-2] + ':' + thetime[-2:] + 'pm'
+            return thetime
+        else:
+            thetime = thetime - 1200
+            thetime = str(thetime)
+            thetime = thetime[:-2] + ':' + thetime[-2:] + 'pm'
+            return thetime
+
+print('----------------- twentyfourto12 check ---------------------')
+print('0930', twentyfourto12('0930'), 
+      '| 1445 ', twentyfourto12('1445'),
+      '| 0012', twentyfourto12('0012'),
+      '| 1213', twentyfourto12('1213')
+      )
+
 
